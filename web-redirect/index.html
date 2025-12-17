@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfecTime - Toplantıya Katıl</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding: 20px;
+    }
+    .container {
+      text-align: center;
+      max-width: 400px;
+    }
+    .logo {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    p {
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    .meeting-id-box {
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 2px dashed rgba(255,255,255,0.5);
+    }
+    .meeting-id-label {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-bottom: 5px;
+    }
+    .meeting-id {
+      font-size: 18px;
+      font-weight: bold;
+      font-family: monospace;
+      letter-spacing: 1px;
+      word-break: break-all;
+      user-select: all;
+    }
+    .copy-hint {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-top: 8px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      margin: 10px 0;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: white;
+      color: #667eea;
+    }
+    .btn-copy {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      font-size: 14px;
+      padding: 12px;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid white;
+    }
+    .stores {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .stores a {
+      background: rgba(0,0,0,0.3);
+      padding: 12px 20px;
+      border-radius: 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .instructions {
+      background: rgba(0,0,0,0.2);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 25px;
+      text-align: left;
+      font-size: 13px;
+    }
+    .instructions h3 {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .instructions ol {
+      margin-left: 20px;
+    }
+    .instructions li {
+      margin-bottom: 5px;
+    }
+    .info-box {
+      background: rgba(255,200,0,0.2);
+      border: 2px solid rgba(255,200,0,0.5);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .info-box h3 {
+      color: #ffeb3b;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">🎯</div>
+    <h1>PerfecTime</h1>
+    <p>Toplantıya katılmak için uygulamayı açın</p>
+    
+    <div class="meeting-id-box" id="meetingIdBox" style="display:none;">
+      <div class="meeting-id-label">📋 Toplantı Kodu:</div>
+      <div class="meeting-id" id="meetingIdText"></div>
+      <div class="copy-hint">Bu kodu uygulamada kullanın</div>
+      <button class="btn btn-copy" onclick="copyMeetingId()">📋 Kodu Kopyala</button>
+    </div>
+    
+    <button class="btn btn-primary" onclick="openApp()">🚀 Uygulamayı Aç</button>
+    
+    <div class="stores">
+      <a href="https://apps.apple.com/app/perfecttime" target="_blank">📱 App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.example.perfect_time" target="_blank">🤖 Play Store</a>
+    </div>
+    
+    <div class="instructions">
+      <h3>📖 Uygulama yüklü değilse:</h3>
+      <ol>
+        <li>Yukarıdaki mağaza linkinden uygulamayı indirin</li>
+        <li>Hesap oluşturun veya giriş yapın</li>
+        <li>"Katılımcı" seçeneğini seçin</li>
+        <li>Yukarıdaki toplantı kodunu girin</li>
+        <li>Toplantıya katılın!</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const meetingId = params.get('id');
+    
+    // Toplantı ID'sini göster
+    if (meetingId) {
+      document.getElementById('meetingIdBox').style.display = 'block';
+      document.getElementById('meetingIdText').textContent = meetingId;
+    }
+    
+    function openApp() {
+      if (meetingId) {
+        window.location.href = 'perfecttime://meeting/join?id=' + meetingId;
+      }
+    }
+    
+    function copyMeetingId() {
+      if (meetingId) {
+        navigator.clipboard.writeText(meetingId).then(() => {
+          alert('Toplantı kodu kopyalandı! ✅');
+        }).catch(() => {
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = meetingId;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          alert('Toplantı kodu kopyalandı! ✅');
+        });
+      }
+    }
+    
+    // Otomatik aç
+    if (meetingId) {
+      setTimeout(openApp, 500);
+    }
+  </script>
+</body>
+</html>

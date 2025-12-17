@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PerfecTime Support - Destek</title>
+    <meta name="description" content="PerfecTime uygulaması için destek sayfası. Sorularınız, hata raporları ve özellik istekleri için iletişim bilgileri.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+
+        .section p, .section ul {
+            color: #555;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section ul li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+        }
+
+        .section ul li:before {
+            content: "•";
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.5em;
+            position: absolute;
+            left: 10px;
+            top: 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            color: white;
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95em;
+            margin: 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            color: #856404;
+            margin: 0;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e9ecef;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #764ba2;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .section h2 {
+                font-size: 1.5em;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⏰ PerfecTime Support</h1>
+            <p>Sorularınız ve sorunlarınız için buradayız</p>
+        </header>
+
+        <div class="content">
+            <div class="section">
+                <h2>📧 İletişim</h2>
+                <div class="contact-grid">
+                    <a href="mailto:support@perfecttime.app" class="contact-card">
+                        <div class="icon">📧</div>
+                        <h3>Email</h3>
+                        <p>support@perfecttime.app</p>
+                    </a>
+                    <a href="https://github.com/dogukanbeyzade/perfecttime/issues" target="_blank" class="contact-card">
+                        <div class="icon">🐛</div>
+                        <h3>Issues</h3>
+                        <p>Hata bildirimi</p>
+                    </a>
+                    <a href="https://github.com/dogukanbeyzade/perfecttime/discussions" target="_blank" class="contact-card">
+                        <div class="icon">💬</div>
+                        <h3>Discussions</h3>
+                        <p>Sohbet ve sorular</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🐛 Hata Raporu</h2>
+                <p>Bir hata bulduysanız, lütfen <a href="https://github.com/dogukanbeyzade/perfecttime/issues" target="_blank">GitHub Issues</a> üzerinden rapor edin.</p>
+                
+                <h3>Hata raporlarında şunları ekleyin:</h3>
+                <ul>
+                    <li>Hata açıklaması</li>
+                    <li>Adımlar (nasıl tekrarlanır)</li>
+                    <li>Beklenen davranış</li>
+                    <li>Gerçek davranış</li>
+                    <li>Cihaz/OS bilgisi</li>
+                    <li>App versiyonu</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>💡 Özellik İsteği</h2>
+                <p>Yeni bir özellik mi istiyorsunuz? Lütfen <a href="https://github.com/dogukanbeyzade/perfecttime/discussions" target="_blank">GitHub Discussions</a> sekmesinde bizimle paylaşın.</p>
+            </div>
+
+            <div class="section">
+                <h2>❓ Sorular</h2>
+                <p>Genel sorularınız için <a href="https://github.com/dogukanbeyzade/perfecttime/discussions" target="_blank">GitHub Discussions</a> bölümünü kullanın.</p>
+            </div>
+
+            <div class="section">
+                <h2>📱 App Yardım</h2>
+                <ul>
+                    <li><strong>Şifre sıfırla:</strong> App içindeki "Forgot Password" seçeneğini kullanın</li>
+                    <li><strong>Teknik sorunlar:</strong> Uygulamayı kapatıp yeniden açmayı deneyin</li>
+                    <li><strong>Login sorunları:</strong> Tarayıcınızın cache'ini temizleyin</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <div class="warning-box">
+                    <h3>🔒 Güvenlik Sorunu</h3>
+                    <p>Güvenlik açığı bulduysanız, lütfen <strong>public</strong> olarak bildirmeyin. Doğrudan <a href="mailto:support@perfecttime.app">email</a> gönderin.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Son Güncelleme:</strong> 17 Aralık 2025</p>
+            <p>Cevap için teşekkürler! 🙏</p>
+            <p style="margin-top: 15px;">
+                <a href="https://github.com/dogukanbeyzade/perfecttime" target="_blank">GitHub Repository</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

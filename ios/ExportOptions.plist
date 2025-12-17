@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>method</key>
+    <string>app-store</string>
+    <key>teamID</key>
+    <string>DT4UT73T4X</string>
+    <key>provisioningProfiles</key>
+    <dict>
+        <key>com.dogukanbeyzade.perfectime</key>
+        <string>match AppStore com.dogukanbeyzade.perfectime</string>
+    </dict>
+    <key>uploadSymbols</key>
+    <true/>
+    <key>uploadBitcode</key>
+    <false/>
+    <key>signingStyle</key>
+    <string>automatic</string>
+    <key>destination</key>
+    <string>upload</string>
+</dict>
+</plist>

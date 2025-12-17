@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "DT4UT73T4X.com.example.perfectTime",
+        "paths": [
+          "/meeting/join",
+          "/meeting/join/*"
+        ]
+      }
+    ]
+  }
+}

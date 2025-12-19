@@ -26,6 +26,33 @@
             padding: 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
+        .lang-switcher {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .lang-btn {
+            padding: 8px 16px;
+            margin-left: 10px;
+            background: #f0f4ff;
+            border: 2px solid #4a6cf7;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .lang-btn.active {
+            background: #4a6cf7;
+            color: white;
+        }
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+        .lang-content {
+            display: none;
+        }
+        .lang-content.active {
+            display: block;
+        }
         h1 {
             color: #1a1a2e;
             margin-bottom: 10px;
@@ -81,8 +108,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>📜 End User License Agreement</h1>
-        <p class="last-updated">Last Updated: December 17, 2025</p>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 English</button>
+            <button class="lang-btn" onclick="switchLang('tr')">🇹🇷 Türkçe</button>
+        </div>
+
+        <!-- English Content -->
+        <div class="lang-content active" id="en-content">
+            <h1>📜 End User License Agreement</h1>
+            <p class="last-updated">Last Updated: December 17, 2025</p>
 
         <div class="highlight">
             <p><strong>Please read this End User License Agreement carefully before using PerfecTime.</strong></p>
@@ -121,7 +155,7 @@
         <p>The App and all content, features, and functionality are owned by the Developer and are protected by international copyright, trademark, and other intellectual property laws.</p>
 
         <h2>6. User Data and Privacy</h2>
-        <p>Your use of the App is also governed by our <a href="index.html">Privacy Policy</a>. By using the App, you consent to the collection and use of information as described therein.</p>
+        <p>Your use of the App is also governed by our <a href="privacy.html">Privacy Policy</a>. By using the App, you consent to the collection and use of information as described therein.</p>
 
         <h2>7. Disclaimer of Warranties</h2>
         <p>THE APP IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. THE DEVELOPER DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
@@ -148,7 +182,106 @@
         <h2>13. Apple-Specific Terms</h2>
         <p>This Agreement is between you and Dogukan Beyzade, not with Apple Inc. Apple has no obligation to provide maintenance or support for the App. Apple is not responsible for any claims relating to the App or your use of it.</p>
 
-        <a href="index.html" class="back-link">← Back to Home</a>
+        </div>
+
+        <!-- Turkish Content -->
+        <div class="lang-content" id="tr-content">
+            <h1>📜 Son Kullanıcı Lisans Sözleşmesi</h1>
+            <p class="last-updated">Son Güncelleme: 17 Aralık 2025</p>
+
+            <div class="highlight">
+                <p><strong>Lütfen PerfecTime'ı kullanmadan önce bu Son Kullanıcı Lisans Sözleşmesini dikkatlice okuyun.</strong></p>
+            </div>
+
+            <h2>1. Şartları Kabul Etme</h2>
+            <p>PerfecTime'ı ("Uygulama") indirerek, yükleyerek veya kullanarak, bu Son Kullanıcı Lisans Sözleşmesine ("Sözleşme") bağlı kalmayı kabul edersiniz. Bu şartları kabul etmiyorsanız, Uygulamayı kullanmayın.</p>
+
+            <h2>2. Lisans Verme</h2>
+            <p>Bu Sözleşmenin şartlarına tabi olarak, Doğukan Beyzade ("Geliştirici") size sınırlı, münhasır olmayan, devredilemez, iptal edilebilir bir lisans verir:</p>
+            <ul>
+                <li>Uygulamayı sahip olduğunuz veya kontrol ettiğiniz cihazlara indirme ve yükleme</li>
+                <li>Uygulamayı kişisel, ticari olmayan amaçlar için kullanma</li>
+            </ul>
+
+            <h2>3. Kısıtlamalar</h2>
+            <p>Şunları yapmamayı kabul edersiniz:</p>
+            <ul>
+                <li>Uygulamayı kopyalamak, değiştirmek veya dağıtmak</li>
+                <li>Uygulamayı tersine mühendislik yapmak, kaynak kodunu çıkarmak veya parçalarına ayırmak</li>
+                <li>Uygulamayı üçüncü taraflara kiralamak, kiraya vermek veya ödünç vermek</li>
+                <li>Uygulamayı yasadışı herhangi bir amaç için kullanmak</li>
+                <li>Uygulamadan herhangi bir telif hakkı veya mülkiyet bildirimi kaldırmak</li>
+            </ul>
+
+            <h2>4. Abonelik Hizmetleri</h2>
+            <p>PerfecTime, abonelik tabanlı premium özellikler sunar:</p>
+            <ul>
+                <li><strong>Aylık Premium:</strong> Aylık olarak faturalandırılır, iptal edilene kadar otomatik yenilenir</li>
+                <li><strong>Yıllık Premium:</strong> Yıllık olarak faturalandırılır, iptal edilene kadar otomatik yenilenir</li>
+                <li><strong>Ömür Boyu Premium:</strong> Tek seferlik satın alma, kalıcı erişim</li>
+            </ul>
+            <p>Ödeme, satın alma onayında Apple kimliği hesabınızdan tahsil edilecektir. Abonelikler, mevcut dönemin bitiminden en az 24 saat önce iptal edilmedikçe otomatik olarak yenilenir. Abonelikleri App Store hesap ayarlarınızdan yönetebilir ve iptal edebilirsiniz.</p>
+
+            <h2>5. Fikri Mülkiyet</h2>
+            <p>Uygulama ve tüm içerik, özellikler ve işlevsellik Geliştirici tarafından sahiplenilir ve uluslararası telif hakkı, ticari marka ve diğer fikri mülkiyet yasaları tarafından korunur.</p>
+
+            <h2>6. Kullanıcı Verileri ve Gizlilik</h2>
+            <p>Uygulamayı kullanımınız aynı zamanda <a href="privacy.html">Gizlilik Politikamız</a> tarafından yönetilir. Uygulamayı kullanarak, orada açıklandığı şekilde bilgilerin toplanmasına ve kullanılmasına izin verirsiniz.</p>
+
+            <h2>7. Garanti Reddi</h2>
+            <p>UYGULAMA "OLDUĞU GİBİ" HİÇBİR GARANTİ VERMEDEn SAĞLANIR. GELİŞTİRİCİ, TİCARİ ELVERİŞLİLİK, BELİRLİ BİR AMACA UYGUNLUK VE İHLAL ETMEMe DAHİL ANCAK BUNLARLA SINIRLI OLMAMAK ÜZERE ZIMNİ TÜM GARANTİLERİ REDDEDER.</p>
+
+            <h2>8. Sorumluluk Sınırlaması</h2>
+            <p>GELİŞTİRİCİ, UYGULAMAYI KULLANIMINIZDAN KAYNAKLANAN VEYA BUNUNLA İLGİLİ HİÇBİR DOLAYLI, ARIZİ, ÖZEL, SONUÇ OLARAK ORTAYA ÇIKAN VEYA CEZAİ ZARARDAN SORUMLU OLMAYACAKTIR.</p>
+
+            <h2>9. Fesih</h2>
+            <p>Bu Sözleşme, feshedilene kadar geçerlidir. Bu Sözleşmenin herhangi bir şartına uymamanız durumunda, bu Sözleşme kapsamındaki haklarınız bildirimde bulunulmaksızın otomatik olarak sona erecektir. Fesih üzerine, Uygulamayı kullanmayı bırakmalı ve tüm kopyalarını silmelisiniz.</p>
+
+            <h2>10. Sözleşme Değişiklikleri</h2>
+            <p>Geliştirici, bu Sözleşmeyi istediği zaman değiştirme hakkını saklı tutar. Değişikliklerden sonra Uygulamayı kullanmaya devam etmek, değiştirilmiş Sözleşmeyi kabul etmek anlamına gelir.</p>
+
+            <h2>11. Uygulanacak Hukuk</h2>
+            <p>Bu Sözleşme, hukuk çatışması hükümlerine bakılmaksızın, Türkiye yasalarına göre yönetilecek ve yorumlanacaktır.</p>
+
+            <h2>12. İletişim Bilgileri</h2>
+            <p>Bu Sözleşme hakkında sorularınız için lütfen iletişime geçin:</p>
+            <ul>
+                <li>E-posta: <a href="mailto:dogukanbeyzade@outlook.com">dogukanbeyzade@outlook.com</a></li>
+                <li>GitHub: <a href="https://github.com/dbeyzade/perfecttime">github.com/dbeyzade/perfecttime</a></li>
+            </ul>
+
+            <h2>13. Apple'a Özgü Şartlar</h2>
+            <p>Bu Sözleşme sizinle Doğukan Beyzade arasındadır, Apple Inc. ile değildir. Apple'ın Uygulama için bakım veya destek sağlama yükümlülüğü yoktur. Apple, Uygulama veya kullanımınızla ilgili hiçbir iddiadan sorumlu değildir.</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Home / Ana Sayfaya Dön</a>
     </div>
+
+    <script>
+        function switchLang(lang) {
+            // Hide all content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelectorAll('.lang-btn').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected language
+            document.getElementById(lang + '-content').classList.add('active');
+            event.target.classList.add('active');
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            if (savedLang === 'tr') {
+                document.querySelector('.lang-btn:nth-child(2)').click();
+            }
+        });
+    </script>
 </body>
 </html>

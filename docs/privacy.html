@@ -26,6 +26,33 @@
             padding: 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
+        .lang-switcher {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .lang-btn {
+            padding: 8px 16px;
+            margin-left: 10px;
+            background: #f0f4ff;
+            border: 2px solid #4a6cf7;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .lang-btn.active {
+            background: #4a6cf7;
+            color: white;
+        }
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+        .lang-content {
+            display: none;
+        }
+        .lang-content.active {
+            display: block;
+        }
         h1 {
             color: #1a1a2e;
             margin-bottom: 10px;
@@ -81,87 +108,205 @@
 </head>
 <body>
     <div class="container">
-        <h1>🔒 Privacy Policy</h1>
-        <p class="last-updated">Last Updated: December 17, 2025</p>
-
-        <div class="highlight">
-            <p><strong>Your privacy is important to us.</strong> PerfecTime is designed with your privacy in mind.</p>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 English</button>
+            <button class="lang-btn" onclick="switchLang('tr')">🇹🇷 Türkçe</button>
         </div>
 
-        <h2>1. Introduction</h2>
-        <p>This Privacy Policy describes how PerfecTime ("we", "our", or "the App") collects, uses, and protects your information when you use our meeting time management application.</p>
+        <!-- English Content -->
+        <div class="lang-content active" id="en-content">
+            <h1>🔒 Privacy Policy</h1>
+            <p class="last-updated">Last Updated: December 17, 2025</p>
 
-        <h2>2. Information We Collect</h2>
-        <p>PerfecTime collects minimal information necessary to provide our services:</p>
-        <ul>
-            <li><strong>Account Information:</strong> Email address for authentication (via Supabase)</li>
-            <li><strong>Meeting Data:</strong> Meeting names, durations, and timestamps you create</li>
-            <li><strong>Subscription Information:</strong> Purchase history for premium features (via RevenueCat)</li>
-        </ul>
+            <div class="highlight">
+                <p><strong>Your privacy is important to us.</strong> PerfecTime is designed with your privacy in mind.</p>
+            </div>
 
-        <h2>3. Information We Do NOT Collect</h2>
-        <ul>
-            <li>We do not collect personal identification beyond email</li>
-            <li>We do not track your location</li>
-            <li>We do not access your contacts or calendar</li>
-            <li>We do not collect browsing history</li>
-            <li>We do not sell your data to third parties</li>
-        </ul>
+            <h2>1. Introduction</h2>
+            <p>This Privacy Policy describes how PerfecTime ("we", "our", or "the App") collects, uses, and protects your information when you use our meeting time management application.</p>
 
-        <h2>4. How We Use Your Information</h2>
-        <p>We use the collected information to:</p>
-        <ul>
-            <li>Provide and maintain the App's functionality</li>
-            <li>Sync your meeting data across devices</li>
-            <li>Process subscription payments</li>
-            <li>Send important service-related notifications</li>
-            <li>Improve and optimize the App</li>
-        </ul>
+            <h2>2. Information We Collect</h2>
+            <p>PerfecTime collects minimal information necessary to provide our services:</p>
+            <ul>
+                <li><strong>Account Information:</strong> Email address for authentication (via Supabase)</li>
+                <li><strong>Meeting Data:</strong> Meeting names, durations, and timestamps you create</li>
+                <li><strong>Subscription Information:</strong> Purchase history for premium features (via RevenueCat)</li>
+            </ul>
 
-        <h2>5. Data Storage and Security</h2>
-        <p>Your data is securely stored using:</p>
-        <ul>
-            <li><strong>Supabase:</strong> For user authentication and meeting data (encrypted, secure cloud storage)</li>
-            <li><strong>RevenueCat:</strong> For subscription management</li>
-            <li><strong>Local Device:</strong> App preferences stored securely on your device</li>
-        </ul>
-        <p>All data transmission is encrypted using industry-standard TLS/SSL protocols.</p>
+            <h2>3. Information We Do NOT Collect</h2>
+            <ul>
+                <li>We do not collect personal identification beyond email</li>
+                <li>We do not track your location</li>
+                <li>We do not access your contacts or calendar</li>
+                <li>We do not collect browsing history</li>
+                <li>We do not sell your data to third parties</li>
+            </ul>
 
-        <h2>6. Third-Party Services</h2>
-        <p>We use the following third-party services:</p>
-        <ul>
-            <li><strong>Supabase:</strong> Authentication and database services - <a href="https://supabase.com/privacy">Privacy Policy</a></li>
-            <li><strong>RevenueCat:</strong> Subscription management - <a href="https://www.revenuecat.com/privacy">Privacy Policy</a></li>
-            <li><strong>Apple:</strong> App Store and payment processing - <a href="https://www.apple.com/privacy/">Privacy Policy</a></li>
-        </ul>
+            <h2>4. How We Use Your Information</h2>
+            <p>We use the collected information to:</p>
+            <ul>
+                <li>Provide and maintain the App's functionality</li>
+                <li>Sync your meeting data across devices</li>
+                <li>Process subscription payments</li>
+                <li>Send important service-related notifications</li>
+                <li>Improve and optimize the App</li>
+            </ul>
 
-        <h2>7. Data Retention</h2>
-        <p>We retain your data for as long as your account is active. You can request deletion of your account and associated data at any time by contacting us.</p>
+            <h2>5. Data Storage and Security</h2>
+            <p>Your data is securely stored using:</p>
+            <ul>
+                <li><strong>Supabase:</strong> For user authentication and meeting data (encrypted, secure cloud storage)</li>
+                <li><strong>RevenueCat:</strong> For subscription management</li>
+                <li><strong>Local Device:</strong> App preferences stored securely on your device</li>
+            </ul>
+            <p>All data transmission is encrypted using industry-standard TLS/SSL protocols.</p>
 
-        <h2>8. Your Rights</h2>
-        <p>You have the right to:</p>
-        <ul>
-            <li>Access your personal data</li>
-            <li>Correct inaccurate data</li>
-            <li>Request deletion of your data</li>
-            <li>Export your data</li>
-            <li>Withdraw consent at any time</li>
-        </ul>
+            <h2>6. Third-Party Services</h2>
+            <p>We use the following third-party services:</p>
+            <ul>
+                <li><strong>Supabase:</strong> Authentication and database services - <a href="https://supabase.com/privacy">Privacy Policy</a></li>
+                <li><strong>RevenueCat:</strong> Subscription management - <a href="https://www.revenuecat.com/privacy">Privacy Policy</a></li>
+                <li><strong>Apple:</strong> App Store and payment processing - <a href="https://www.apple.com/privacy/">Privacy Policy</a></li>
+            </ul>
 
-        <h2>9. Children's Privacy</h2>
-        <p>PerfecTime is not intended for children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, please contact us immediately.</p>
+            <h2>7. Data Retention</h2>
+            <p>We retain your data for as long as your account is active. You can request deletion of your account and associated data at any time through the app settings.</p>
 
-        <h2>10. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+            <h2>8. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access your personal data</li>
+                <li>Correct inaccurate data</li>
+                <li>Request deletion of your data</li>
+                <li>Export your data</li>
+                <li>Withdraw consent at any time</li>
+            </ul>
 
-        <h2>11. Contact Us</h2>
-        <p>If you have any questions about this Privacy Policy, please contact us:</p>
-        <ul>
-            <li>Email: <a href="mailto:dogukanbeyzade@outlook.com">dogukanbeyzade@outlook.com</a></li>
-            <li>GitHub: <a href="https://github.com/dbeyzade/perfecttime">github.com/dbeyzade/perfecttime</a></li>
-        </ul>
+            <h2>9. Children's Privacy</h2>
+            <p>PerfecTime is not intended for children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, please contact us immediately.</p>
 
-        <a href="index.html" class="back-link">← Back to Home</a>
+            <h2>10. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+
+            <h2>11. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us:</p>
+            <ul>
+                <li>Email: <a href="mailto:dogukanbeyzade@outlook.com">dogukanbeyzade@outlook.com</a></li>
+                <li>GitHub: <a href="https://github.com/dbeyzade/perfecttime">github.com/dbeyzade/perfecttime</a></li>
+            </ul>
+        </div>
+
+        <!-- Turkish Content -->
+        <div class="lang-content" id="tr-content">
+            <h1>🔒 Gizlilik Politikası</h1>
+            <p class="last-updated">Son Güncelleme: 17 Aralık 2025</p>
+
+            <div class="highlight">
+                <p><strong>Gizliliğiniz bizim için önemlidir.</strong> PerfecTime, gizliliğinizi ön planda tutarak tasarlanmıştır.</p>
+            </div>
+
+            <h2>1. Giriş</h2>
+            <p>Bu Gizlilik Politikası, PerfecTime ("biz", "bizim" veya "Uygulama") toplantı zamanı yönetimi uygulamasını kullanırken bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar.</p>
+
+            <h2>2. Topladığımız Bilgiler</h2>
+            <p>PerfecTime, hizmetlerimizi sağlamak için gerekli minimum bilgileri toplar:</p>
+            <ul>
+                <li><strong>Hesap Bilgileri:</strong> Kimlik doğrulama için e-posta adresi (Supabase üzerinden)</li>
+                <li><strong>Toplantı Verileri:</strong> Oluşturduğunuz toplantı adları, süreleri ve zaman damgaları</li>
+                <li><strong>Abonelik Bilgileri:</strong> Premium özellikler için satın alma geçmişi (RevenueCat üzerinden)</li>
+            </ul>
+
+            <h2>3. Toplamadığımız Bilgiler</h2>
+            <ul>
+                <li>E-posta dışında kişisel kimlik bilgisi toplamıyoruz</li>
+                <li>Konumunuzu takip etmiyoruz</li>
+                <li>Kişilerinize veya takviminize erişmiyoruz</li>
+                <li>Tarama geçmişi toplamıyoruz</li>
+                <li>Verilerinizi üçüncü taraflara satmıyoruz</li>
+            </ul>
+
+            <h2>4. Bilgilerinizi Nasıl Kullanırız</h2>
+            <p>Toplanan bilgileri şu amaçlarla kullanırız:</p>
+            <ul>
+                <li>Uygulamanın işlevselliğini sağlamak ve sürdürmek</li>
+                <li>Toplantı verilerinizi cihazlar arasında senkronize etmek</li>
+                <li>Abonelik ödemelerini işlemek</li>
+                <li>Önemli hizmetle ilgili bildirimler göndermek</li>
+                <li>Uygulamayı geliştirmek ve optimize etmek</li>
+            </ul>
+
+            <h2>5. Veri Depolama ve Güvenlik</h2>
+            <p>Verileriniz güvenli bir şekilde şuralarda saklanır:</p>
+            <ul>
+                <li><strong>Supabase:</strong> Kullanıcı kimlik doğrulama ve toplantı verileri için (şifreli, güvenli bulut depolama)</li>
+                <li><strong>RevenueCat:</strong> Abonelik yönetimi için</li>
+                <li><strong>Yerel Cihaz:</strong> Uygulama tercihleri cihazınızda güvenli bir şekilde saklanır</li>
+            </ul>
+            <p>Tüm veri iletimi endüstri standardı TLS/SSL protokolleri kullanılarak şifrelenir.</p>
+
+            <h2>6. Üçüncü Taraf Hizmetleri</h2>
+            <p>Aşağıdaki üçüncü taraf hizmetlerini kullanıyoruz:</p>
+            <ul>
+                <li><strong>Supabase:</strong> Kimlik doğrulama ve veritabanı hizmetleri - <a href="https://supabase.com/privacy">Gizlilik Politikası</a></li>
+                <li><strong>RevenueCat:</strong> Abonelik yönetimi - <a href="https://www.revenuecat.com/privacy">Gizlilik Politikası</a></li>
+                <li><strong>Apple:</strong> App Store ve ödeme işlemleri - <a href="https://www.apple.com/tr/privacy/">Gizlilik Politikası</a></li>
+            </ul>
+
+            <h2>7. Veri Saklama</h2>
+            <p>Hesabınız aktif olduğu sürece verilerinizi saklarız. Uygulama ayarları üzerinden hesabınızın ve ilgili verilerinizin silinmesini isteyebilirsiniz.</p>
+
+            <h2>8. Haklarınız</h2>
+            <p>Aşağıdaki haklara sahipsiniz:</p>
+            <ul>
+                <li>Kişisel verilerinize erişim</li>
+                <li>Yanlış verileri düzeltme</li>
+                <li>Verilerinizin silinmesini talep etme</li>
+                <li>Verilerinizi dışa aktarma</li>
+                <li>İzninizi istediğiniz zaman geri çekme</li>
+            </ul>
+
+            <h2>9. Çocukların Gizliliği</h2>
+            <p>PerfecTime, 13 yaşın altındaki çocuklar için tasarlanmamıştır. 13 yaşın altındaki çocuklardan bilerek kişisel bilgi toplamıyoruz. Böyle bir bilgi topladığımızı düşünüyorsanız, lütfen derhal bizimle iletişime geçin.</p>
+
+            <h2>10. Politika Değişiklikleri</h2>
+            <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklikler olduğunda, yeni Gizlilik Politikasını bu sayfada yayınlayarak ve "Son Güncelleme" tarihini güncelleyerek sizi bilgilendireceğiz.</p>
+
+            <h2>11. İletişim</h2>
+            <p>Bu Gizlilik Politikası hakkında sorularınız varsa, bizimle iletişime geçin:</p>
+            <ul>
+                <li>E-posta: <a href="mailto:dogukanbeyzade@outlook.com">dogukanbeyzade@outlook.com</a></li>
+                <li>GitHub: <a href="https://github.com/dbeyzade/perfecttime">github.com/dbeyzade/perfecttime</a></li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Home / Ana Sayfaya Dön</a>
     </div>
+
+    <script>
+        function switchLang(lang) {
+            // Hide all content
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelectorAll('.lang-btn').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected language
+            document.getElementById(lang + '-content').classList.add('active');
+            event.target.classList.add('active');
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            if (savedLang === 'tr') {
+                document.querySelector('.lang-btn:nth-child(2)').click();
+            }
+        });
+    </script>
 </body>
 </html>

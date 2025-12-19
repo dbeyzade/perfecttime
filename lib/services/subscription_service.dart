@@ -1,11 +1,80 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SubscriptionService {
   final SupabaseClient supabase;
   
-  static const int FREE_USES = 10;
+  // Üye olmadan 10 kez kullanım hakkı
+  static const int FREE_GUEST_USES = 10;
+  // Üye olduktan sonra free plan için kullanım hakkı
+  static const int FREE_MEMBER_USES = 10;
+  
+  // SharedPreferences key for guest usage
+  static const String _guestUsageKey = 'guest_usage_count';
 
   SubscriptionService(this.supabase);
+
+  /// Get guest usage count (for non-logged in users)
+  static Future<int> getGuestUsageCount() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(_guestUsageKey) ?? 0;
+  }
+
+  /// Increment guest usage count
+  static Future<void> incrementGuestUsage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final current = prefs.getInt(_guestUsageKey) ?? 0;
+    await prefs.setInt(_guestUsageKey, current + 1);
+  }
+
+  /// Check if guest can use app (not logged in)
+  static Future<bool> canGuestUseApp() async {
+    final usageCount = await getGuestUsageCount();
+    return usageCount < FREE_GUEST_USES;
+  }
+
+  /// Get remaining guest uses
+  static Future<int> getRemainingGuestUses() async {
+    final usageCount = await getGuestUsageCount();
+    return FREE_GUEST_USES - usageCount;
+  }
+
+  /// Reset guest usage (call after successful login/registration)
+  static Future<void> resetGuestUsage() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_guestUsageKey, 0);
+  }
+
+  /// Create free subscription for new user
+  Future<void> createFreeSubscription(String userId) async {
+    try {
+      // Check if subscription already exists
+      final existing = await getUserSubscription(userId);
+      if (existing != null) return;
+      
+      final now = DateTime.now();
+      await supabase.from('subscriptions').insert({
+        'user_id': userId,
+        'plan_type': 'free',
+        'status': 'active',
+        'starts_at': now.toIso8601String(),
+        'created_at': now.toIso8601String(),
+        'updated_at': now.toIso8601String(),
+      });
+      
+      // Also create usage tracking record
+      await supabase.from('usage_tracking').insert({
+        'user_id': userId,
+        'usage_count': 0,
+        'created_at': now.toIso8601String(),
+        'updated_at': now.toIso8601String(),
+      });
+      
+      print('Created free subscription for user $userId');
+    } catch (e) {
+      print('Error creating free subscription: $e');
+    }
+  }
 
   /// Get user subscription
   Future<Map<String, dynamic>?> getUserSubscription(String userId) async {
@@ -68,7 +137,7 @@ class SubscriptionService {
 
       // Free users check usage count
       final usageCount = await getUserUsageCount(userId);
-      return (usageCount ?? 0) < FREE_USES;
+      return (usageCount ?? 0) < FREE_MEMBER_USES;
     } catch (e) {
       print('Error checking app usage: $e');
       return false;
@@ -122,7 +191,7 @@ class SubscriptionService {
   Future<int> getRemainingFreeUses(String userId) async {
     try {
       final usageCount = await getUserUsageCount(userId);
-      return FREE_USES - (usageCount ?? 0);
+      return FREE_MEMBER_USES - (usageCount ?? 0);
     } catch (e) {
       print('Error getting remaining uses: $e');
       return 0;
